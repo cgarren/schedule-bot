@@ -4,6 +4,8 @@ import ast  # the lib that handles the url stuff
 import smtplib
 import sys
 import datetime
+#import os
+#print(os.listdir(os.curdir))
 #from gi.repository import Notify
 
 #from email.mime.text import MIMEText
@@ -25,6 +27,14 @@ sms_gateway = '9133962110@mms.att.net'
 smtp = "smtp.gmail.com"
 port = 587
 #msg = MIMEMultipart()
+
+# This will start our email server
+server = smtplib.SMTP(smtp, port)
+# Starting the server
+server.starttls()
+# Now we need to login
+server.login(email, password)
+
 try:
 	file = open("classes_output.txt", "r")
 	lines = []
@@ -52,13 +62,7 @@ try:
 	file.write("Timestamp: " + str(datetime.datetime.today()) + '\n')
 
 	course_list = ast.literal_eval(list(urllib.request.urlopen('https://stevens-scheduler.cfapps.io/p/' + semester))[0].decode('ascii'))
-
-	# This will start our email server
-	server = smtplib.SMTP(smtp, port)
-	# Starting the server
-	server.starttls()
-	# Now we need to login
-	server.login(email, password)
+	
 	num = 0
 	for course in course_list:
 	    # if num == 0:
