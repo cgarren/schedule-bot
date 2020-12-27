@@ -14,7 +14,7 @@ import datetime
 #Notify.init("Check open classes")
 #Notify.Notification.new("Checking for open classes... ").show()
 
-semester = "2020F"
+semester = "2021S"
 
 needed_classes = ['HSS 141B', 'HSS 141D', 'HSS 127B', 'HSS 127A', 'E 321D', 'E 321E', 'E 321F', 'HSS 175A', 'CPE 490A']
 
